@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online KYC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"], input[type="number"], input[type="date"] {
+      width: calc(100% - 16px); /* Adjusting for input padding */
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px 20px;
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Online KYC</h2>
+    <div class="form-group">
+      <label for="aadharNumber">Aadhaar Number</label>
+      <input type="number" id="aadharNumber" placeholder="Enter your 12-digit Aadhaar number" required>
+      <div id="aadharError" class="error-message"></div>
+    </div>
+    <div class="form-group">
+      <label for="fullName">Full Name (as per Aadhaar)</label>
+      <input type="text" id="fullName" placeholder="Enter your full name" required>
+      <div id="nameError" class="error-message"></div>
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth (YYYY-MM-DD)</label>
+      <input type="date" id="dob" placeholder="YYYY-MM-DD" required>
+      <div id="dobError" class="error-message"></div>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" id="address" placeholder="Enter your address" required>
+      <div id="addressError" class="error-message"></div>
+    </div>
+    <button onclick="submitKYC()">Submit</button>
+  </div>
+
+  <script>
+    function submitKYC() {
+      const aadharNumber = document.getElementById('aadharNumber').value;
+      const fullName = document.getElementById('fullName').value;
+      const dob = document.getElementById('dob').value;
+      const address = document.getElementById('address').value;
+
+      // Validation
+      const aadharRegex = /^\d{12}$/;
+      const dobRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+      let isValid = true;
+
+      if (!aadharRegex.test(aadharNumber)) {
+        document.getElementById('aadharError').innerText = 'Please enter a valid 12-digit Aadhaar number';
+        isValid = false;
+      } else {
+        document.getElementById('aadharError').innerText = '';
+      }
+
+      if (fullName.trim() === '') {
+        document.getElementById('nameError').innerText = 'Please enter your full name';
+        isValid = false;
+      } else {
+        document.getElementById('nameError').innerText = '';
+      }
+
+      if (!dobRegex.test(dob)) {
+        document.getElementById('dobError').innerText = 'Please enter a valid date in YYYY-MM-DD format';
+        isValid = false;
+      } else {
+        document.getElementById('dobError').innerText = '';
+      }
+
+      if (address.trim() === '') {
+        document.getElementById('addressError').innerText = 'Please enter your address';
+        isValid = false;
+      } else {
+        document.getElementById('addressError').innerText = '';
+      }
+
+      // If all inputs are valid, proceed with submission
+      if (isValid) {
+        console.log('Aadhaar Number:', aadharNumber);
+        console.log('Full Name:', fullName);
+        console.log('Date of Birth:', dob);
+        console.log('Address:', address);
+        // You may proceed to submit the form or send data to backend
+      }
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online KYC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"], input[type="number"], input[type="date"] {
+      width: calc(100% - 16px); /* Adjusting for input padding */
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px 20px;
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Online KYC</h2>
+    <div class="form-group">
+      <label for="aadharNumber">Aadhaar Number</label>
+      <input type="number" id="aadharNumber" placeholder="Enter your 12-digit Aadhaar number" required>
+      <div id="aadharError" class="error-message"></div>
+    </div>
+    <div class="form-group">
+      <label for="fullName">Full Name (as per Aadhaar)</label>
+      <input type="text" id="fullName" placeholder="Enter your full name" required>
+      <div id="nameError" class="error-message"></div>
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth (YYYY-MM-DD)</label>
+      <input type="date" id="dob" placeholder="YYYY-MM-DD" required>
+      <div id="dobError" class="error-message"></div>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" id="address" placeholder="Enter your address" required>
+      <div id="addressError" class="error-message"></div>
+    </div>
+    <button onclick="submitKYC()">Submit</button>
+  </div>
+
+  <script>
+    function submitKYC() {
+      const aadharNumber = document.getElementById('aadharNumber').value;
+      const fullName = document.getElementById('fullName').value;
+      const dob = document.getElementById('dob').value;
+      const address = document.getElementById('address').value;
+
+      // Validation
+      const aadharRegex = /^\d{12}$/;
+      const dobRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+      let isValid = true;
+
+      if (!aadharRegex.test(aadharNumber)) {
+        document.getElementById('aadharError').innerText = 'Please enter a valid 12-digit Aadhaar number';
+        isValid = false;
+      } else {
+        document.getElementById('aadharError').innerText = '';
+      }
+
+      if (fullName.trim() === '') {
+        document.getElementById('nameError').innerText = 'Please enter your full name';
+        isValid = false;
+      } else {
+        document.getElementById('nameError').innerText = '';
+      }
+
+      if (!dobRegex.test(dob)) {
+        document.getElementById('dobError').innerText = 'Please enter a valid date in YYYY-MM-DD format';
+        isValid = false;
+      } else {
+        document.getElementById('dobError').innerText = '';
+      }
+
+      if (address.trim() === '') {
+        document.getElementById('addressError').innerText = 'Please enter your address';
+        isValid = false;
+      } else {
+        document.getElementById('addressError').innerText = '';
+      }
+
+      // If all inputs are valid, proceed with submission
+      if (isValid) {
+        // Redirect to the next page with form data as query parameters
+        window.location.href = `next_page.html?aadharNumber=${aadharNumber}&fullName=${fullName}&dob=${dob}&address=${address}`;
+      }
+    }
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,23 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+#video {
+  width: 320px;
+  height: 240px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+#canvas {
+  display: none;
+}
+#message {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
